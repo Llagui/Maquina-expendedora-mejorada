@@ -10,6 +10,8 @@ public class MaquinaExpendedoraMejorada {
     private String estacionOrigen;
     // El destino del billete
     private String estacionDestino;
+    // operacion en curso
+    private boolean operacionEnCurso;
 
     /**
      * Crea una maquina expendedora de billetes de tren con el 
@@ -44,6 +46,7 @@ public class MaquinaExpendedoraMejorada {
     public void introducirDinero(int cantidadIntroducida) {
         if (cantidadIntroducida > 0) {
             balanceClienteActual = balanceClienteActual + cantidadIntroducida;
+            operacionEnCurso = true;
         }
         else {
             System.out.println(cantidadIntroducida + " no es una cantidad de dinero valida.");
@@ -56,7 +59,7 @@ public class MaquinaExpendedoraMejorada {
     public void imprimirBillete() {
         int cantidadDeDineroQueFalta =  precioBillete - balanceClienteActual;
         if (cantidadDeDineroQueFalta <= 0) { 
-            
+
             // Simula la impresion de un billete
             System.out.println("##################");
             System.out.println("# Billete de tren:");
@@ -69,11 +72,14 @@ public class MaquinaExpendedoraMejorada {
             totalDineroAcumulado = totalDineroAcumulado + precioBillete;
             // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
             balanceClienteActual = balanceClienteActual - precioBillete;
+
+            operacionEnCurso = false;
         }
         else{
-        System.out.println("Introduce "+  cantidadDeDineroQueFalta + " para poder sacar el billete");
+            System.out.println("Introduce "+  cantidadDeDineroQueFalta + " para poder sacar el billete");
         }
     }
+
     /**
      * Cancela la operacion de compra del cliente actual y le
      * devuelve al cliente el dinero que ha introducido hasta el momento
@@ -84,13 +90,21 @@ public class MaquinaExpendedoraMejorada {
         balanceClienteActual = 0;
         return cantidadDeDineroADevolver;
     } 
+
     /**
      *  Devuleve todo el dinero que hay en la maquina
      */
     public int vaciarDineroDeLaMaquina() {
         int cantidadTotalDeDinero = totalDineroAcumulado + balanceClienteActual;
-        totalDineroAcumulado = 0;
-        balanceClienteActual = 0;
+        if (operacionEnCurso = false) {
+            totalDineroAcumulado = 0;
+            balanceClienteActual = 0;
+            return cantidadTotalDeDinero;
+        }
+        else{
+            cantidadTotalDeDinero = -1;
+            System.out.println("ERROR Usuario usando la maquina");
+        }
         return cantidadTotalDeDinero;
     }
 }
