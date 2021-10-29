@@ -74,6 +74,7 @@ public class MaquinaExpendedoraMejorada {
             balanceClienteActual = balanceClienteActual - precioBillete;
 
             operacionEnCurso = false;
+            
         }
         else{
             System.out.println("Introduce "+  cantidadDeDineroQueFalta + " para poder sacar el billete");
@@ -88,6 +89,7 @@ public class MaquinaExpendedoraMejorada {
         int cantidadDeDineroADevolver;
         cantidadDeDineroADevolver = balanceClienteActual;
         balanceClienteActual = 0;
+        operacionEnCurso = false;
         return cantidadDeDineroADevolver;
     } 
 
