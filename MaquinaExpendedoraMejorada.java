@@ -78,7 +78,7 @@ public class MaquinaExpendedoraMejorada {
      * Cancela la operacion de compra del cliente actual y le
      * devuelve al cliente el dinero que ha introducido hasta el momento
      */
-        public int cancelarOperacionYDevolverDinero() {
+    public int cancelarOperacionYDevolverDinero() {
         int cantidadDeDineroADevolver;
         cantidadDeDineroADevolver = balanceClienteActual;
         balanceClienteActual = 0;
@@ -88,7 +88,9 @@ public class MaquinaExpendedoraMejorada {
      *  Devuleve todo el dinero que hay en la maquina
      */
     public int vaciarDineroDeLaMaquina() {
-        int cantidadTotalDeDinero=precioBillete + balanceClienteActual;
+        int cantidadTotalDeDinero = totalDineroAcumulado + balanceClienteActual;
+        totalDineroAcumulado = 0;
+        balanceClienteActual = 0;
         return cantidadTotalDeDinero;
     }
 }
