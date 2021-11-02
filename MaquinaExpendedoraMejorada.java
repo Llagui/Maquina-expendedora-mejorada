@@ -75,32 +75,34 @@ public class MaquinaExpendedoraMejorada {
         if(maxBilletes > numeroBilletes ){
             if (cantidadDeDineroQueFalta <= 0) { 
 
-                // Simula la impresion de un billete
-                System.out.println("##################");
-                System.out.println("# Billete de tren:");
-                System.out.println("# De " + estacionOrigen + " a " + estacionDestino);
-                System.out.println("# " + precioBillete + " euros.");
-                System.out.println("##################");
-                System.out.println();         
+            // Simula la impresion de un billete
+            System.out.println("##################");
+            System.out.println("# Billete de tren:");
+            System.out.println("# De " + estacionOrigen + " a " + estacionDestino);
+            System.out.println("# " + precioBillete + " euros.");
+            System.out.println("##################");
+            System.out.println();         
 
-                // Actualiza el total de dinero acumulado en la maquina
-                totalDineroAcumulado = totalDineroAcumulado + precioBillete;
-                // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
-                balanceClienteActual = balanceClienteActual - precioBillete;
-                // Suma 1 billete al total
-                numeroBilletes = numeroBilletes + 1;
-            
+            // Actualiza el total de dinero acumulado en la maquina
+            totalDineroAcumulado = totalDineroAcumulado + precioBillete;
+            // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
+            balanceClienteActual = balanceClienteActual - precioBillete;
+            // Suma 1 billete al total
+            numeroBilletes = numeroBilletes + 1;
+                
                 if(maquinaPremio == true){
-                    System.out.println("#####################################");
-                    System.out.println("¡Enhorabuena! Ha ganado un 10% de ");
-                    System.out.println("descuento en una tienda a su elecion");
-                    System.out.println("En su caso la cantidad es: " + precioBillete * 0.1);
-                    System.out.println();
-                    System.out.println("Detalles en la pagina web");
-                    System.out.println("#####################################");
-                    System.out.println();
-                }    
-            }
+                    if(numeroBilletes % 3 == 0){
+                        System.out.println("#####################################");
+                        System.out.println("¡Enhorabuena! Ha ganado un 10% de ");
+                        System.out.println("descuento en una tienda a su elecion");
+                        System.out.println("En su caso la cantidad es: " + precioBillete * 0.1);
+                        System.out.println();
+                        System.out.println("Detalles en la pagina web");
+                        System.out.println("#####################################");
+                        System.out.println();
+                    }    
+                }
+                    
             else{
                 System.out.println("Introduce "+  cantidadDeDineroQueFalta + " para poder sacar el billete");
             }
@@ -112,6 +114,7 @@ public class MaquinaExpendedoraMejorada {
             System.out.println();
         }
     }
+}
 
     /**
      * Cancela la operacion de compra del cliente actual y le
