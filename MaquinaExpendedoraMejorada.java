@@ -12,19 +12,22 @@ public class MaquinaExpendedoraMejorada {
     private String estacionDestino;
     // Total de billetes
     private int numeroBilletes;
+    // Posisbilidad de premio
+    private boolean maquinaPremio;
 
     /**
      * Crea una maquina expendedora de billetes de tren con el 
      * precio del billete y el origen y destino dados. Se asume que el precio
      * del billete que se recibe es mayor que 0.
      */
-    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino) {
+    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino, boolean premioTrueOrFalse) {
         precioBillete = precioDelBillete;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
         numeroBilletes = 0;
         estacionOrigen = origen;
         estacionDestino = destino;
+        maquinaPremio = premioTrueOrFalse;
     }
 
     /**
@@ -74,6 +77,17 @@ public class MaquinaExpendedoraMejorada {
             balanceClienteActual = balanceClienteActual - precioBillete;
             // Suma 1 billete al total
             numeroBilletes = numeroBilletes + 1;
+            
+            if(maquinaPremio == true){
+               System.out.println("#####################################");
+               System.out.println("¡Enhorabuena! Ha ganado un 10% de ");
+               System.out.println("descuento en una tienda a su elecion");
+               System.out.println("En su caso la cantidad es: " + precioBillete * 0.1);
+               System.out.println();
+               System.out.println("Detalles en la pagina web");
+               System.out.println("#####################################");
+               System.out.println();
+            }
         }
         else{
             System.out.println("Introduce "+  cantidadDeDineroQueFalta + " para poder sacar el billete");
@@ -118,6 +132,6 @@ public class MaquinaExpendedoraMejorada {
      * 
      */
     public void imprimeNumeroBilletesVendidos(){
-        System.out.println(numeroBilletes);
+        System.out.println(numeroBilletes + "se han imprimido");
     }
 }
