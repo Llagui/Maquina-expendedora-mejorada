@@ -106,7 +106,18 @@ public class MaquinaExpendedoraMejorada {
         }
         return cantidadTotalDeDinero;
     }
+    
+    /**
+     * devuelve el valor del numero de billetes vendidos
+     */
     public int getNumeroBilletesVendidos(){
         return numeroBilletes;
+    }
+    
+    /**
+     * 
+     */
+    public void imprimeNumeroBilletesVendidos(){
+        System.out.println(numeroBilletes);
     }
 }
